@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>IAS Authorization Site</title>
+      <link rel="stylesheet" href="Style.css">
+      <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  </head>
+  <body>
+    <div class="container" id="blur">
+        <div class="partition">
+            <h2 id="text">Without Authorization</h2>
+            <button class="btn" onclick="toggle()" id="btn" onmousemove="hoverIn()" onmouseout="hoverOut()">Download File</button>
+            <input type="checkbox" id="darkmode-toggle" onclick="hideBtn()"> 
+          <label for="darkmode-toggle">
+            <img src="lock-open.png" class='lock-open-alt'>
+            <img src="lock.png" class='lock-alt'>
+          </label>
+        </div>
+    </div>
+    <div class="wrapper" id="popup">
+       <form action="">
+           <h1>Login</h1>
+           <div class="input-box">
+               <input type="text" placeholder="Username" id="username" required>
+               <i class='bx bxs-user'></i>
+           </div>
+           <div class="input-box">
+               <input type="password" placeholder="Password" id="password" required>
+               <i class='bx bxs-lock-alt' ></i>
+           </div>
+           <button type="submit" class="button" onclick="authenticate()" id="button">Login</button>
+    </form> 
+    <a class="cBtn" href="#" onclick="toggle()">Close</a>
+   </div> 
+  </body>
+  <script type="text/javascript">
+    let isClicked = true;
+
+    function popup(){
+        var blur = document.getElementById('blur');
+        blur.classList.toggle('active');
+        var popup = document.getElementById('popup');
+        popup.classList.toggle('active');
+    }
+
+    function toggle(){
+        if (isClicked){
+        var documentUrl = "./Click link to redirect.pdf";
+        var link = document.createElement("a");
+        link.href = documentUrl;
+        link.download = "example.pdf";
+        link.target = "_blank";
+        link.click();
+        }
+        else {
+        popup();
+        }
+    }
+
+            function hoverIn(){
+              if (isClicked){
+              document.getElementById('btn').style.background="rgba(255, 255, 255, 1)";
+              
+              }
+              else {
+              document.getElementById('btn').style.background="rgba(0, 0, 0, 1)";
+             
+              }
+            }
+
+            function hoverOut(){
+                document.getElementById('btn').style.background="rgba(255, 255, 255, 0.4)";
+            }
+              
+            function hideBtn(){
+              if (isClicked){
+                document.getElementById('text').innerHTML = "With Authorization";
+                isClicked = false;
+              } else {
+                document.getElementById('text').innerHTML = "Without Authorization";
+                isClicked = true;
+              }
+            }
+
+            function authenticate() {
+              var username = document.getElementById('username').value;
+              var password = document.getElementById('password').value;
+              
+              // Dummy authentication logic
+              if (username === 'admin' && password === 'password') {
+                var documentUrl = "./Click link to redirect.pdf";
+                var link = document.createElement("a");
+                link.href = documentUrl;
+                link.download = "example.pdf";
+                link.target = "_blank";
+                link.click();
+                alert('Download successful!');
+                popup();
+              } else {
+                alert('Invalid username or password. Please try again.');
+              }
+            }
+  </script>
+</html>

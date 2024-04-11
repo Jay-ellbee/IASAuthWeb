@@ -1,0 +1,223 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container{
+  position: fixed;
+  background: radial-gradient(circle, transparent 40%, rgba(0, 0, 0, 0.35) 90%), url("bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.partition{
+  position: absolute;
+  height: 70%;
+  width: 40%;
+  left: 8%;
+  background:rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: auto;
+  backdrop-filter: blur(20px);
+}
+
+h2{
+  color: #7a3832;
+  font-size: 50px;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px black;
+}
+
+/*toggle button design*/ 
+label{
+  width: 125px;
+  height: 50px;
+  position: relative;
+  display: block;
+  background: #fff;
+  border-radius: 50px;
+  box-shadow: inset 0px 1.25px 3.75px rgba(0,0,0,0.4), inset 0px -1.25px 3.75px rgba(255,255,255,0.4);
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 50px;
+}
+label:after{
+  content: "";
+  width: 45px;
+  height: 45px;
+  position: absolute;
+  top: 2.5px;
+  left: 2.5px;
+  background: linear-gradient(180deg, white, #fff);
+  border-radius: 45px;
+  box-shadow: 0px 1.25px 2.5px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+#darkmode-toggle{
+  width: 0;
+  height: 0;
+  visibility:  hidden;
+}
+#darkmode-toggle:checked + label {
+  background: #242424;
+}
+#darkmode-toggle:checked + label:after{
+  left: 122.5px;
+  transform: translateX(-100%);
+  background: linear-gradient(180deg, #777, #3a3a3a);
+}
+label:active:after{
+  width: 65px;
+}
+
+label img{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 10px;
+  z-index: 100;
+}
+label img.lock-open-alt{
+  left: 10px;
+  fill: #fff;
+  transition: 0.3s;
+}
+label img.lock-alt{
+  left: 85px;
+  fill: #7e7e7e;
+  transition: 0.3s;
+}
+input:checked + label img.lock-open-alt{
+  fill: #7e7e7e;
+}
+input:checked + label img.lock-alt{
+  fill: #fff;
+} 
+
+/*button design*/
+.btn{
+  text-decoration: none;
+  border-radius: 10px;
+  border: 2px solid #7a3832;
+  box-shadow: 2px 2px 5px black;
+  background: rgba(255, 255, 255, 0.4);
+  padding: 12px 20px;
+  font-size: 25px;
+  font-family: 'poppins';
+  cursor: pointer;
+  margin-top: 50px;
+  position: relative;
+  color: #7a3832;
+  font-weight: 500;
+  transition: ease-in-out;
+}
+
+.btn:hover{
+  box-shadow: 3px 3px 0px black;
+  scale: 1.1;
+}
+
+/*pop-up display*/
+#popup{
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  padding: 50px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, .3);
+  background: rgba(255, 255, 255, 0.9);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+
+.wrapper .input-box {
+position: relative;
+width: 100%;
+height: 50px;
+margin: 30px 0;
+}
+
+.input-box input {
+width: 100%;
+height: 100%;
+background: transparent;
+border: none;
+outline: none;
+border: 2px solid #7a3832;
+border-radius: 40px;
+font-size: 16px;
+color: #7a3832;
+padding: 20px 45px 20px 20px;
+}
+
+.input-box input::placeholder {
+color: rgba(47.84, 21.96, 19.61, 0.7);
+}
+
+.input-box i {
+position: absolute;
+right: 20px;
+top: 50%;
+transform: translateY(-50%);
+font-size: 20px;
+}
+
+.wrapper .button {
+width: 100%;
+height: 45px;
+background: #7a3832;
+border: none;
+outline: none;
+border-radius: 40px;
+box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+cursor: pointer;
+font-size: 16px;
+color: white;
+font-weight: 600;
+}
+
+.cBtn{
+  position: relative;
+  padding: 5px 20px;
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  color: #7a3832;
+  background: none;
+  border: 2px solid #7a3832;
+}
+
+h1{
+  color: #7a3832;
+}
+
+/*activation*/
+.container#blur.active{
+  filter: blur(20px);
+  pointer-events: none;
+  user-select: none;
+}
+
+#popup.active{
+  top: 50%;
+  visibility: visible;
+  opacity: 1;
+  transition: 0.5s;
+}
